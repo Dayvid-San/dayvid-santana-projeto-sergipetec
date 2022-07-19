@@ -1,0 +1,43 @@
+<div class="alert alert-success fixed-alert"  style="position: fixed; top: 0; width: 100%;" [routerLink]="['novoContribuinte']" (click)="refresh()" *ngIf="deletado">
+  Deletado com sucesso!
+</div>
+<div class="card-body">
+  <div class="float-end">
+    <button class="btn btn-primary" [routerLink]="['novoContribuinte']">Novo Contribuinte</button>
+  </div>
+  <table class="table table-hover" *ngIf="contribuintes$ | async as contribuintes; else loading">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Contribuintes</th>
+        <th>E-mail</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contribuinte of contribuintes">
+        <td>{{ contribuinte.id }}</td>
+        <td>{{ contribuinte.nome }}</td>
+        <td>{{ contribuinte.email }}</td>
+        <td>
+          <span class="float-end">
+            <button class="btn btn-outline-info btn-sm" (click)="onDetails(contribuinte.id)">
+              Detalhes
+            </button>
+            {{ ' ' }}
+            <button [routerLink]="['editarContribuintes/:id']" class="btn btn-outline-success btn-sm" (click)="onEdit(contribuinte.id)">
+              Editar
+            </button>
+            {{ ' ' }}
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="toDelete(contribuinte)">
+              Excluir
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #loading>
+    <span>Carregando...</span>
+  </ng-template>
+</div>

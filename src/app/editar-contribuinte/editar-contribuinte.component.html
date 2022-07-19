@@ -1,0 +1,72 @@
+<!--
+ novalidate[FormGroup]
+-->
+
+<div class="alert alert-success"  style="position: fixed; top: 0; width: 100%;" *ngIf="submitted">
+  Registrado com sucesso!
+</div>
+<div class="float-end mt-2">
+  <button class="btn btn-primary" [routerLink]="['']">Página principal</button>
+</div>
+<form (ngSubmit)="addContribuinte()" class="card-body justify-content-md-end needs-validation" >
+  <div class="container mt-2 row align-items-center col-sm-12">
+    <label for="nome">Nome</label>
+    <input [(ngModel)]="nome" name="nome" type="text" id="nome" class="col-lg-9 " required>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      Por favor, digite o nome do contribuite!
+    </div>
+  </div>
+  <div class="container mt-2  row align-items-center">
+    <label for="cpf">CPF</label>
+    <input [(ngModel)]="cpf" name="cpf" type="text" id="cpf" class="col-lg-9" >
+    <div class="col ">
+    </div>
+  </div>
+  <div class="container mt-2 row align-items-center" id="emai-box">
+    <label for="email">Email</label>
+    <input [(ngModel)]="email" name="email" class="col-lg-9" type="text" id="email">
+    <div class="col ">
+      <button class="btn btn-success btn-sm" type="button" (click)="addEmail()">+</button>
+    </div>
+  </div>
+  <div *ngIf="isNewEmail" class="container mt-2 row align-items-center">
+    <label for="new-email">Novo Email</label>
+    <input nome="new-email" placeholder="Digite o novo e-mail aqui para adicionar!" class="col-lg-9" type="text"
+      id="new-email">
+  </div>
+  <div class="container mt-2 row align-items-center">
+    <label for="celular">Celular</label>
+    <input [(ngModel)]="celular" name="celular" class="col-lg-9" type="text" id="celular">
+    <div class="col ">
+    </div>
+  </div>
+  <div class="container mt-2 row align-items-center">
+    <label for="telefone">Telefone</label>
+    <input [(ngModel)]="telefone" name="telefone" class="col-lg-9" type="text" id="telefone">
+    <div class="col ">
+    </div>
+  </div>
+  <div class="container mt-2 row align-items-center">
+    <label for="endereco">Endereço</label>
+    <div name="endereco" class="container row">
+      <label for="endereco-rua">Rua</label>
+      <input [(ngModel)]="rua" class="col-lg-4 mt-1" type="text" id="rua" name="rua">
+      <label for="rua">Número</label>
+      <input [(ngModel)]="enderecos[0].numero" class="col-lg-4 mt-1" type="text" id="numero" name="numero">
+      <label for="enderecos-rua">Bairro</label>
+      <input [(ngModel)]="bairro" class="col-lg-4 mt-1" type="text" id="bairro" name="bairro">
+      <label for="enderecos-rua">Cidade</label>
+      <input [(ngModel)]="enderecos[0].cidade" class="col-lg-4 mt-1" type="text" id="cidade" name="cidade">
+      <label for="enderecos-rua">CEP</label>
+      <input [(ngModel)]="enderecos[0].cep" class="col-lg-4 mt-1" type="text" id="cep" name="cep">
+      <label for="enderecos-rua">Estado</label>
+      <input [(ngModel)]="enderecos[0].estado" class="col-lg-4 mt-1" type="text" id="estado" name="estado">
+      <label for="enderecos-rua">Pais</label>
+      <input [(ngModel)]="enderecos[0].pais" class="col-lg-4 mt-1" type="text" id="pais" name="pais">
+    </div>
+  </div>
+  <div class="ml-0 mt-4">
+    <button type="submit"  class="btn btn-outline-success m-1">atualizar</button>
+    <button  class="btn btn-outline-danger mp-1">cancelar</button>
+  </div>
+</form>
