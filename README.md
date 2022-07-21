@@ -1,4 +1,4 @@
-# Dayvid SantanaP rojeto Sergipetec
+# Dayvid Santana Projeto Sergipetec
 Projeto de Dayvid Santana para a Sergitec
 
 ## Para executar
